@@ -13,6 +13,8 @@
 
 .aside {
   flex: 0 0 60px;
+  padding-top: var(--mantine-spacing-sm);
+  padding-bottom: var(--mantine-spacing-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +24,6 @@
 
 .main {
   flex: 1;
-  background-color: var(--mantine-color-gray-0);
 }
 
 .link {
@@ -32,9 +33,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--mantine-color-gray-7) !important;
+  color: var(--mantine-color-gray-8) !important;
+  background-color: var(--mantine-color-gray-0) !important;
 
   &:hover {
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--mantine-color-gray-1) !important;
+  }
+
+  &[data-active] {
+    background-color: var(--mantine-color-blue-1) !important;
+    color: var(--mantine-color-blue-8) !important;
   }
 }
