@@ -5,8 +5,9 @@ import {
   IconPalette,
   type Icon,
 } from "@tabler/icons-react";
-import classes from "./Navbar.module.css";
+import { SectionIcon } from "@/components/Navbar/Section/SectionIcon/SectionIcon";
 import { useState } from "react";
+import classes from "./Navbar.module.css";
 
 interface NavbarLinkProps {
   icon: Icon;
@@ -46,7 +47,7 @@ export function Navbar() {
     <nav className={classes.navbar}>
       <div className={classes.wrapper}>
         <div className={classes.aside}>
-          <Stack gap="xs">
+          <Stack gap={6}>
             {[
               { icon: IconBrush, label: "Icon" },
               { icon: IconPalette, label: "Background" },
@@ -67,7 +68,7 @@ export function Navbar() {
           />
         </div>
         <div className={classes.main}>
-          {active === 0 && <span>Icon</span>}
+          {active === 0 && <SectionIcon />}
           {active === 1 && <span>Background</span>}
           {active === 2 && <span>About</span>}
         </div>

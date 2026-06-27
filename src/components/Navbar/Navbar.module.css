@@ -24,6 +24,7 @@
 
 .main {
   flex: 1;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
 }
 
 .link {
