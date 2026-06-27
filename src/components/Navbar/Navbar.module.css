@@ -1,0 +1,40 @@
+.navbar {
+  flex: 1;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--mantine-color-gray-3);
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+}
+
+.aside {
+  flex: 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-right: 1px solid var(--mantine-color-gray-3);
+}
+
+.main {
+  flex: 1;
+  background-color: var(--mantine-color-gray-0);
+}
+
+.link {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--mantine-radius-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mantine-color-gray-7) !important;
+
+  &:hover {
+    background-color: var(--mantine-color-gray-0);
+  }
+}
