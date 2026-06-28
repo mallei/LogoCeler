@@ -6,12 +6,12 @@ interface SectionWrapperProps {
 }
 
 export function SectionWrapper({ children }: SectionWrapperProps) {
-  return <Stack gap={24}>{children}</Stack>;
+  return <Stack gap={28}>{children}</Stack>;
 }
 
 interface SectionFieldProps {
   mainLabel: string;
-  secondaryLabel: string;
+  secondaryLabel?: string;
   children: React.ReactNode;
 }
 
@@ -26,9 +26,11 @@ export function SectionField({
         <Text span size="sm">
           {mainLabel}
         </Text>
-        <Text span size="xs">
-          {secondaryLabel}
-        </Text>
+        {secondaryLabel && (
+          <Text span size="xs">
+            {secondaryLabel}
+          </Text>
+        )}
       </Group>
       {children}
     </Stack>
