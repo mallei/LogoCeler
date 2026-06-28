@@ -6,7 +6,7 @@ interface SectionWrapperProps {
 }
 
 export function SectionWrapper({ children }: SectionWrapperProps) {
-  return <Stack gap={28}>{children}</Stack>;
+  return <Stack gap={24}>{children}</Stack>;
 }
 
 interface SectionFieldProps {

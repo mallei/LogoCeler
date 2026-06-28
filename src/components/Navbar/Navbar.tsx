@@ -6,6 +6,7 @@ import {
   type Icon,
 } from "@tabler/icons-react";
 import { SectionIcon } from "@/components/Navbar/Section/SectionIcon/SectionIcon";
+import { SectionBackground } from "@/components/Navbar/Section/SectionBackground/SectionBackground";
 import { useState } from "react";
 import classes from "./Navbar.module.css";
 
@@ -69,7 +70,7 @@ export function Navbar() {
         </div>
         <div className={classes.main}>
           {active === 0 && <SectionIcon />}
-          {active === 1 && <span>Background</span>}
+          {active === 1 && <SectionBackground />}
           {active === 2 && <span>About</span>}
         </div>
       </div>
