@@ -1,0 +1,25 @@
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    linear-gradient(var(--mantine-color-gray-2) 1px, transparent 1px),
+    linear-gradient(
+      to right,
+      var(--mantine-color-gray-2) 1px,
+      var(--mantine-color-gray-0) 1px
+    );
+  background-size: 1.7rem 1.7rem;
+  background-position: center center;
+}
+
+.logoPreview {
+  outline-width: 2px;
+  outline-style: dashed;
+  outline-color: var(--mantine-color-gray-3);
+
+  &:hover {
+    outline-color: var(--mantine-color-gray-4);
+  }
+}

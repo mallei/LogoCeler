@@ -25,7 +25,7 @@ export function SectionBackground() {
         <NumberInput
           variant="filled"
           suffix="px"
-          defaultValue={0}
+          defaultValue={25}
           min={0}
           max={128}
           clampBehavior="strict"
