@@ -1,7 +1,11 @@
-import { IconBox } from "@tabler/icons-react";
+import { use } from "react";
+import { LogoContext } from "@/context/logoContext";
 import classes from "./MainView.module.css";
 
 export function MainView() {
+  const { logoSettings } = use(LogoContext);
+  const LogoIcon = logoSettings.icon.icon;
+
   return (
     <main className={classes.main}>
       <div className={classes.logoPreview}>
@@ -9,7 +13,7 @@ export function MainView() {
           style={{
             width: 512,
             height: 512,
-            padding: 25,
+            padding: logoSettings.background.padding,
           }}
         >
           <div
@@ -19,17 +23,17 @@ export function MainView() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "rgba(0, 0, 0, 1)",
-              borderRadius: 100,
+              backgroundColor: logoSettings.background.color,
+              borderRadius: logoSettings.background.rounded,
             }}
           >
-            <IconBox
-              size={350}
-              rotate={0}
-              strokeWidth={1.75}
-              color="rgba(255, 255, 255, 1)"
-              fillOpacity={0}
-              fill="rgb(255, 255, 255)"
+            <LogoIcon
+              size={logoSettings.icon.size}
+              strokeWidth={logoSettings.icon.strokeWidth}
+              color={logoSettings.icon.color}
+              fillOpacity={logoSettings.icon.fillOpacity / 100}
+              fill={logoSettings.icon.fill}
+              style={{ rotate: `${logoSettings.icon.rotate}deg` }}
             />
           </div>
         </div>

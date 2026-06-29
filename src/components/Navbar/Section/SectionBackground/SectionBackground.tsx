@@ -3,15 +3,25 @@ import {
   SectionField,
   SectionWrapper,
 } from "@/components/Navbar/Section/Section";
+import { use } from "react";
+import { LogoContext } from "@/context/logoContext";
 
 export function SectionBackground() {
+  const { logoSettings, setLogoSettings } = use(LogoContext);
+
   return (
     <SectionWrapper>
       <SectionField mainLabel="Rounded" secondaryLabel="[0; 256]">
         <NumberInput
           variant="filled"
           suffix="px"
-          defaultValue={100}
+          value={logoSettings.background.rounded}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              background: { ...prev.background, rounded: Number(newValue) },
+            }))
+          }
           min={0}
           max={256}
           clampBehavior="strict"
@@ -25,7 +35,13 @@ export function SectionBackground() {
         <NumberInput
           variant="filled"
           suffix="px"
-          defaultValue={25}
+          value={logoSettings.background.padding}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              background: { ...prev.background, padding: Number(newValue) },
+            }))
+          }
           min={0}
           max={128}
           clampBehavior="strict"
@@ -39,7 +55,13 @@ export function SectionBackground() {
         <ColorInput
           variant="filled"
           format="rgba"
-          defaultValue="rgba(0, 0, 0, 1)"
+          value={logoSettings.background.color}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              background: { ...prev.background, color: newValue },
+            }))
+          }
         />
       </SectionField>
     </SectionWrapper>

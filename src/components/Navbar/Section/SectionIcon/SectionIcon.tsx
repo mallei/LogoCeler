@@ -7,21 +7,27 @@ import { use } from "react";
 import { LogoContext } from "@/context/logoContext";
 
 export function SectionIcon() {
-  const { logoSettings } = use(LogoContext);
+  const { logoSettings, setLogoSettings } = use(LogoContext);
   const LogoIcon = logoSettings.icon.icon;
 
   return (
     <SectionWrapper>
-      <SectionField mainLabel="Icon" secondaryLabel="Box">
+      <SectionField mainLabel="Icon" secondaryLabel={LogoIcon.displayName}>
         <ActionIcon variant="light" color="gray" size="xl">
-          <LogoIcon size={26} strokeWidth={1.75} />
+          <LogoIcon size={26} strokeWidth={logoSettings.icon.strokeWidth} />
         </ActionIcon>
       </SectionField>
       <SectionField mainLabel="Size" secondaryLabel="[0; 512]">
         <NumberInput
           variant="filled"
           suffix="px"
-          defaultValue={350}
+          value={logoSettings.icon.size}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              icon: { ...prev.icon, size: Number(newValue) },
+            }))
+          }
           min={0}
           max={512}
           clampBehavior="strict"
@@ -35,7 +41,13 @@ export function SectionIcon() {
         <NumberInput
           variant="filled"
           suffix="&deg;"
-          defaultValue={0}
+          value={logoSettings.icon.rotate}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              icon: { ...prev.icon, rotate: Number(newValue) },
+            }))
+          }
           min={-180}
           max={180}
           clampBehavior="strict"
@@ -49,7 +61,13 @@ export function SectionIcon() {
         <NumberInput
           variant="filled"
           suffix="px"
-          defaultValue={1.75}
+          value={logoSettings.icon.strokeWidth}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              icon: { ...prev.icon, strokeWidth: Number(newValue) },
+            }))
+          }
           min={0.25}
           max={6.0}
           step={0.25}
@@ -65,14 +83,26 @@ export function SectionIcon() {
         <ColorInput
           variant="filled"
           format="rgba"
-          defaultValue="rgba(255, 255, 255, 1)"
+          value={logoSettings.icon.color}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              icon: { ...prev.icon, color: newValue },
+            }))
+          }
         />
       </SectionField>
       <SectionField mainLabel="Fill Opacity" secondaryLabel="[0; 100]">
         <NumberInput
           variant="filled"
           suffix="%"
-          defaultValue={0}
+          value={logoSettings.icon.fillOpacity}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              icon: { ...prev.icon, fillOpacity: Number(newValue) },
+            }))
+          }
           min={0}
           max={100}
           clampBehavior="strict"
@@ -86,7 +116,13 @@ export function SectionIcon() {
         <ColorInput
           variant="filled"
           format="rgb"
-          defaultValue="rgb(255, 255, 255)"
+          value={logoSettings.icon.fill}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              icon: { ...prev.icon, fill: newValue },
+            }))
+          }
         />
       </SectionField>
     </SectionWrapper>

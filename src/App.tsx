@@ -5,7 +5,7 @@ import { MainView } from "@/components/MainView/MainView";
 import { LogoContext } from "@/context/logoContext";
 import { type LogoSettingsType } from "@/types";
 import { useState } from "react";
-import { Icon24Hours, IconBox } from "@tabler/icons-react";
+import { IconBox } from "@tabler/icons-react";
 import "@mantine/core/styles.css";
 
 const theme = createTheme({
@@ -15,7 +15,7 @@ const theme = createTheme({
 export default function App() {
   const [logoSettings, setLogoSettings] = useState<LogoSettingsType>({
     icon: {
-      icon: Icon24Hours,
+      icon: IconBox,
       size: 350,
       rotate: 0,
       strokeWidth: 1.75,
