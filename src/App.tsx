@@ -2,6 +2,10 @@ import { createTheme, Flex, MantineProvider } from "@mantine/core";
 import { Header } from "@/components/Header/Header";
 import { Navbar } from "@/components/Navbar/Navbar";
 import { MainView } from "@/components/MainView/MainView";
+import { LogoContext } from "@/context/logoContext";
+import { type LogoSettingsType } from "@/types";
+import { useState } from "react";
+import { Icon24Hours, IconBox } from "@tabler/icons-react";
 import "@mantine/core/styles.css";
 
 const theme = createTheme({
@@ -9,13 +13,32 @@ const theme = createTheme({
 });
 
 export default function App() {
+  const [logoSettings, setLogoSettings] = useState<LogoSettingsType>({
+    icon: {
+      icon: Icon24Hours,
+      size: 350,
+      rotate: 0,
+      strokeWidth: 1.75,
+      color: "rgba(255, 255, 255, 1)",
+      fillOpacity: 0,
+      fill: "rgb(255, 255, 255)",
+    },
+    background: {
+      rounded: 100,
+      padding: 25,
+      color: "rgba(0, 0, 0, 1)",
+    },
+  });
+
   return (
     <MantineProvider theme={theme}>
-      <Header />
-      <Flex flex={1}>
-        <Navbar />
-        <MainView />
-      </Flex>
+      <LogoContext value={{ logoSettings, setLogoSettings }}>
+        <Header />
+        <Flex flex={1}>
+          <Navbar />
+          <MainView />
+        </Flex>
+      </LogoContext>
     </MantineProvider>
   );
 }

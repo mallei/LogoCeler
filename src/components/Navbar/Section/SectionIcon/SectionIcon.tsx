@@ -3,14 +3,18 @@ import {
   SectionWrapper,
   SectionField,
 } from "@/components/Navbar/Section/Section";
-import { IconBox } from "@tabler/icons-react";
+import { use } from "react";
+import { LogoContext } from "@/context/logoContext";
 
 export function SectionIcon() {
+  const { logoSettings } = use(LogoContext);
+  const LogoIcon = logoSettings.icon.icon;
+
   return (
     <SectionWrapper>
       <SectionField mainLabel="Icon" secondaryLabel="Box">
         <ActionIcon variant="light" color="gray" size="xl">
-          <IconBox size={26} strokeWidth={1.75} />
+          <LogoIcon size={26} strokeWidth={1.75} />
         </ActionIcon>
       </SectionField>
       <SectionField mainLabel="Size" secondaryLabel="[0; 512]">
