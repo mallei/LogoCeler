@@ -16,7 +16,17 @@ export function SectionIcon() {
   return (
     <SectionWrapper>
       <SectionField mainLabel="Icon" secondaryLabel={LogoIcon.displayName}>
-        <IconPicker opened={opened} onClose={close} />
+        <IconPicker
+          opened={opened}
+          onClose={close}
+          onPick={(newValue) => {
+            setLogoSettings((prev) => ({
+              ...prev,
+              icon: { ...prev.icon, icon: newValue },
+            }));
+            close();
+          }}
+        />
         <ActionIcon variant="light" color="gray" size="xl" onClick={open}>
           <LogoIcon size={26} strokeWidth={logoSettings.icon.strokeWidth} />
         </ActionIcon>
