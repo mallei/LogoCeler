@@ -5,15 +5,19 @@ import {
 } from "@/components/Navbar/Section/Section";
 import { use } from "react";
 import { LogoContext } from "@/context/logoContext";
+import { IconPicker } from "@/components/IconPicker/IconPicker";
+import { useDisclosure } from "@mantine/hooks";
 
 export function SectionIcon() {
   const { logoSettings, setLogoSettings } = use(LogoContext);
   const LogoIcon = logoSettings.icon.icon;
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <SectionWrapper>
       <SectionField mainLabel="Icon" secondaryLabel={LogoIcon.displayName}>
-        <ActionIcon variant="light" color="gray" size="xl">
+        <IconPicker opened={opened} onClose={close} />
+        <ActionIcon variant="light" color="gray" size="xl" onClick={open}>
           <LogoIcon size={26} strokeWidth={logoSettings.icon.strokeWidth} />
         </ActionIcon>
       </SectionField>
