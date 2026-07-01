@@ -37,16 +37,7 @@ export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
   );
 
   return (
-    <Modal
-      opened={opened}
-      onClose={onClose}
-      title="Icon Picker"
-      centered
-      transitionProps={{ duration: 0 }}
-      overlayProps={{ color: "var(--mantine-color-gray-0)" }}
-      styles={{ title: { fontWeight: 500 } }}
-      size="auto"
-    >
+    <Modal opened={opened} onClose={onClose} title="Icon Picker" size="auto">
       <SimpleGrid cols={8} spacing="xs">
         {visibleIconNames.map((iconName) => {
           const IconComponent = TablerIcons[

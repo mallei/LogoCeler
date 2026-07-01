@@ -1,4 +1,4 @@
-import { createTheme, Flex, MantineProvider } from "@mantine/core";
+import { createTheme, Flex, MantineProvider, Modal } from "@mantine/core";
 import { Header } from "@/components/Header/Header";
 import { Navbar } from "@/components/Navbar/Navbar";
 import { MainView } from "@/components/MainView/MainView";
@@ -10,6 +10,20 @@ import "@mantine/core/styles.css";
 
 const theme = createTheme({
   fontFamily: "DMSans",
+  components: {
+    Modal: Modal.extend({
+      styles: {
+        title: {
+          fontWeight: 500,
+        },
+      },
+      defaultProps: {
+        centered: true,
+        transitionProps: { duration: 0 },
+        overlayProps: { color: "var(--mantine-color-gray-0)" },
+      },
+    }),
+  },
 });
 
 export default function App() {

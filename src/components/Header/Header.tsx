@@ -1,8 +1,12 @@
 import { Button, Group, Text } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
+import { useDisclosure } from "@mantine/hooks";
+import { LogoDownload } from "@/components/LogoDownload/LogoDownload";
 import classes from "./Header.module.css";
 
 export function Header() {
+  const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <header className={classes.header}>
       <Group justify="space-between" h="100%">
@@ -10,11 +14,13 @@ export function Header() {
           LogoCeler
         </Text>
         <Button
+          onClick={open}
           leftSection={<IconDownload size={16} strokeWidth={1.75} />}
           fw={500}
         >
           Download
         </Button>
+        <LogoDownload opened={opened} onClose={close} />
       </Group>
     </header>
   );
