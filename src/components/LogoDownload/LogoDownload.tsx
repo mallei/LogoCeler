@@ -3,6 +3,7 @@ import { Button, Grid, Modal, Select, TextInput } from "@mantine/core";
 import { LogoContext } from "@/context/logoContext";
 import { use } from "react";
 import { generateLogoSVG } from "@/helpers/generateLogoSVG";
+import { downloadLogo } from "@/helpers/downloadLogo";
 import { useState } from "react";
 
 interface LogoDownloadProps {
@@ -19,6 +20,11 @@ export function LogoDownload({ opened, onClose }: LogoDownloadProps) {
   const [size, setSize] = useState<LogoDownloadSettingsType["size"] | null>(
     "512x512",
   );
+
+  function handleDownload() {
+    const logoSVG = generateLogoSVG(logoSettings, size!);
+    downloadLogo(logoSVG, { name, format: format!, size: size! });
+  }
 
   return (
     <Modal opened={opened} onClose={onClose} title="Download Logo" size="xs">
@@ -65,11 +71,11 @@ export function LogoDownload({ opened, onClose }: LogoDownloadProps) {
         </Grid.Col>
         <Grid.Col span={12}>
           <Button
-            onClick={() => console.log(generateLogoSVG(logoSettings))}
+            onClick={() => handleDownload()}
             variant="default"
             color="gray"
           >
-            Save 'logo-512x512.png'
+            Save
           </Button>
         </Grid.Col>
       </Grid>
