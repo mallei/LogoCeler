@@ -33,14 +33,16 @@ export default function App() {
       size: 350,
       rotate: 0,
       strokeWidth: 1.75,
-      color: "rgba(255, 255, 255, 1)",
+      opacity: 100,
+      color: "rgb(255, 255, 255)",
       fillOpacity: 0,
-      fill: "rgb(255, 255, 255)",
+      fillColor: "rgb(255, 255, 255)",
     },
     background: {
       rounded: 100,
       padding: 25,
-      color: "rgba(0, 0, 0, 1)",
+      opacity: 100,
+      color: "rgb(0, 0, 0)",
     },
   });
 

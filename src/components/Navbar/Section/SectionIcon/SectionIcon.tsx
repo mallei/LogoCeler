@@ -93,10 +93,30 @@ export function SectionIcon() {
           w="75%"
         />
       </SectionField>
+      <SectionField mainLabel="Icon Opacity" secondaryLabel="[0; 100]">
+        <NumberInput
+          variant="filled"
+          suffix="%"
+          value={logoSettings.icon.opacity}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              icon: { ...prev.icon, opacity: Number(newValue) },
+            }))
+          }
+          min={0}
+          max={100}
+          clampBehavior="strict"
+          allowDecimal={false}
+          stepHoldDelay={500}
+          stepHoldInterval={100}
+          w="75%"
+        />
+      </SectionField>
       <SectionField mainLabel="Icon Color">
         <ColorInput
           variant="filled"
-          format="rgba"
+          format="rgb"
           value={logoSettings.icon.color}
           onChange={(newValue) =>
             setLogoSettings((prev) => ({
@@ -130,11 +150,11 @@ export function SectionIcon() {
         <ColorInput
           variant="filled"
           format="rgb"
-          value={logoSettings.icon.fill}
+          value={logoSettings.icon.fillColor}
           onChange={(newValue) =>
             setLogoSettings((prev) => ({
               ...prev,
-              icon: { ...prev.icon, fill: newValue },
+              icon: { ...prev.icon, fillColor: newValue },
             }))
           }
         />

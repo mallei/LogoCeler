@@ -36,16 +36,18 @@ export function generateLogoSVG(
     height="${backgroundSize}"
     rx="${logoSettings.background.rounded}"
     ry="${logoSettings.background.rounded}"
+    fill-opacity="${logoSettings.background.opacity / 100}"
     fill="${logoSettings.background.color}"
   />
   <g
     transform="translate(${iconPosition}, ${iconPosition}) rotate(${logoSettings.icon.rotate} ${logoSettings.icon.size / 2} ${logoSettings.icon.size / 2}) scale(${logoIconScale})"
-    fill="${logoSettings.icon.fill}"
-    stroke="${logoSettings.icon.color}"
     stroke-width="${logoSettings.icon.strokeWidth}"
+    stroke-opacity="${logoSettings.icon.opacity / 100}"
+    stroke="${logoSettings.icon.color}"
+    fill-opacity="${logoSettings.icon.fillOpacity / 100}"
+    fill="${logoSettings.icon.fillColor}"
     stroke-linecap="round"
     stroke-linejoin="round"
-    fill-opacity="${logoSettings.icon.fillOpacity}"
   >
     ${innerSVG}
   </g>

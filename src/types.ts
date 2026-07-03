@@ -6,13 +6,15 @@ export interface LogoSettingsType {
     size: number;
     rotate: number;
     strokeWidth: number;
+    opacity: number;
     color: string;
     fillOpacity: number;
-    fill: string;
+    fillColor: string;
   };
   background: {
     rounded: number;
     padding: number;
+    opacity: number;
     color: string;
   };
 }
