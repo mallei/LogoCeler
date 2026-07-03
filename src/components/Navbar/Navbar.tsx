@@ -1,4 +1,4 @@
-import { Stack, Tooltip, UnstyledButton } from "@mantine/core";
+import { ScrollArea, Stack, Tooltip, UnstyledButton } from "@mantine/core";
 import {
   IconBrackets,
   IconBrush,
@@ -68,11 +68,16 @@ export function Navbar() {
             onClick={() => setActive(2)}
           />
         </div>
-        <div className={classes.main}>
+        <ScrollArea
+          className={classes.main}
+          offsetScrollbars
+          scrollbarSize={8}
+          scrollHideDelay={0}
+        >
           {active === 0 && <SectionIcon />}
           {active === 1 && <SectionBackground />}
           {active === 2 && <span>About</span>}
-        </div>
+        </ScrollArea>
       </div>
     </nav>
   );

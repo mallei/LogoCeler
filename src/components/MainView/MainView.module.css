@@ -1,5 +1,7 @@
 .main {
   flex: 1;
+  overflow: hidden;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,8 +20,24 @@
   outline-width: 2px;
   outline-style: dashed;
   outline-color: var(--mantine-color-gray-3);
+  background-color: color-mix(
+    in srgb,
+    var(--mantine-color-gray-3),
+    transparent 75%
+  );
 
   &:hover {
     outline-color: var(--mantine-color-gray-4);
+    background-color: color-mix(
+      in srgb,
+      var(--mantine-color-gray-4),
+      transparent 75%
+    );
   }
+}
+
+.zoomBtn {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }

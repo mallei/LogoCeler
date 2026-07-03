@@ -50,7 +50,7 @@ export default function App() {
     <MantineProvider theme={theme}>
       <LogoContext value={{ logoSettings, setLogoSettings }}>
         <Header />
-        <Flex flex={1}>
+        <Flex flex={1} mih={0}>
           <Navbar />
           <MainView />
         </Flex>

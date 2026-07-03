@@ -1,9 +1,9 @@
-import type { LogoSettingsType, LogoDownloadSettingsType } from "@/types";
+import type { LogoSettingsType } from "@/types";
 import { renderToStaticMarkup } from "react-dom/server";
 
 export function generateLogoSVG(
   logoSettings: LogoSettingsType,
-  logoDownloadSize: LogoDownloadSettingsType["size"],
+  logoSVGSize: number,
 ): string {
   const LogoIcon = logoSettings.icon.icon;
   const logoIconSVG = renderToStaticMarkup(<LogoIcon />);
@@ -15,7 +15,6 @@ export function generateLogoSVG(
     "",
   );
 
-  const logoSize = logoDownloadSize.split("x")[0];
   const backgroundSize = 512 - logoSettings.background.padding * 2;
   const iconPosition =
     (backgroundSize - logoSettings.icon.size) / 2 +
@@ -24,8 +23,8 @@ export function generateLogoSVG(
 
   return `
 <svg
-  width="${logoSize}"
-  height="${logoSize}"
+  width="${logoSVGSize}"
+  height="${logoSVGSize}"
   viewBox="0 0 512 512"
   xmlns="http://www.w3.org/2000/svg"
 >

@@ -22,7 +22,7 @@ export function LogoDownload({ opened, onClose }: LogoDownloadProps) {
   );
 
   function handleDownload() {
-    const logoSVG = generateLogoSVG(logoSettings, size!);
+    const logoSVG = generateLogoSVG(logoSettings, Number(size!.split("x")[0]));
     downloadLogo(logoSVG, { name, format: format!, size: size! });
   }
 
