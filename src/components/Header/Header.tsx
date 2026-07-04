@@ -1,11 +1,13 @@
 import { Button, Group, Text } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useHotkeys } from "@mantine/hooks";
 import { LogoDownload } from "@/components/LogoDownload/LogoDownload";
 import classes from "./Header.module.css";
 
 export function Header() {
   const [opened, { open, close }] = useDisclosure(false);
+
+  useHotkeys([["mod + S", () => open()]]);
 
   return (
     <header className={classes.header}>

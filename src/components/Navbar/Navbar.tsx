@@ -9,6 +9,7 @@ import { SectionIcon } from "@/components/Navbar/Section/SectionIcon/SectionIcon
 import { SectionBackground } from "@/components/Navbar/Section/SectionBackground/SectionBackground";
 import { useState } from "react";
 import classes from "./Navbar.module.css";
+import { useHotkeys } from "@mantine/hooks";
 
 interface NavbarLinkProps {
   icon: Icon;
@@ -43,6 +44,12 @@ function NavbarLink({
 
 export function Navbar() {
   const [active, setActive] = useState(0);
+
+  useHotkeys([
+    ["mod + 1", () => setActive(0)],
+    ["mod + 2", () => setActive(1)],
+    ["mod + 3", () => setActive(2)],
+  ]);
 
   return (
     <nav className={classes.navbar}>
