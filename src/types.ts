@@ -16,6 +16,9 @@ export interface LogoSettingsType {
     padding: number;
     opacity: number;
     color: string;
+    strokeWidth: number;
+    strokeOpacity: number;
+    strokeColor: string;
   };
 }
 

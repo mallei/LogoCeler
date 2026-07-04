@@ -36,5 +36,8 @@ export const DEFAULT_LOGO_SETTINGS: LogoSettingsType = {
     padding: 25,
     opacity: 100,
     color: "rgb(0, 0, 0)",
+    strokeWidth: 0,
+    strokeOpacity: 100,
+    strokeColor: "rgb(255, 255, 255)",
   },
 };

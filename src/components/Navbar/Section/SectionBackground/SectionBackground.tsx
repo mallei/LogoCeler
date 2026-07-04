@@ -84,6 +84,62 @@ export function SectionBackground() {
           }
         />
       </SectionField>
+      <SectionField mainLabel="Stroke Width" secondaryLabel="[0; 48]">
+        <NumberInput
+          variant="filled"
+          suffix="px"
+          value={logoSettings.background.strokeWidth}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              background: { ...prev.background, strokeWidth: Number(newValue) },
+            }))
+          }
+          min={0}
+          max={48}
+          clampBehavior="strict"
+          allowDecimal={false}
+          stepHoldDelay={500}
+          stepHoldInterval={100}
+          w="75%"
+        />
+      </SectionField>
+      <SectionField mainLabel="Stroke Opacity" secondaryLabel="[0; 100]">
+        <NumberInput
+          variant="filled"
+          suffix="%"
+          value={logoSettings.background.strokeOpacity}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              background: {
+                ...prev.background,
+                strokeOpacity: Number(newValue),
+              },
+            }))
+          }
+          min={0}
+          max={100}
+          clampBehavior="strict"
+          allowDecimal={false}
+          stepHoldDelay={500}
+          stepHoldInterval={100}
+          w="75%"
+        />
+      </SectionField>
+      <SectionField mainLabel="Stroke Color">
+        <ColorInput
+          variant="filled"
+          format="rgb"
+          value={logoSettings.background.strokeColor}
+          onChange={(newValue) =>
+            setLogoSettings((prev) => ({
+              ...prev,
+              background: { ...prev.background, strokeColor: newValue },
+            }))
+          }
+        />
+      </SectionField>
     </SectionWrapper>
   );
 }

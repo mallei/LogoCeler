@@ -15,10 +15,14 @@ export function generateLogoSVG(
     "",
   );
 
-  const backgroundSize = 512 - logoSettings.background.padding * 2;
+  const backgroundSize =
+    512 -
+    logoSettings.background.padding * 2 -
+    logoSettings.background.strokeWidth;
+  const backgroundPosition =
+    logoSettings.background.padding + logoSettings.background.strokeWidth / 2;
   const iconPosition =
-    (backgroundSize - logoSettings.icon.size) / 2 +
-    logoSettings.background.padding;
+    (backgroundSize - logoSettings.icon.size) / 2 + backgroundPosition;
   const logoIconScale = logoSettings.icon.size / 24;
 
   return `
@@ -29,14 +33,17 @@ export function generateLogoSVG(
   xmlns="http://www.w3.org/2000/svg"
 >
   <rect
-    x="${logoSettings.background.padding}"
-    y="${logoSettings.background.padding}"
+    x="${backgroundPosition}"
+    y="${backgroundPosition}"
     width="${backgroundSize}"
     height="${backgroundSize}"
-    rx="${logoSettings.background.rounded}"
-    ry="${logoSettings.background.rounded}"
+    rx="${logoSettings.background.rounded - logoSettings.background.strokeWidth / 2}"
+    ry="${logoSettings.background.rounded - logoSettings.background.strokeWidth / 2}"
     fill-opacity="${logoSettings.background.opacity / 100}"
     fill="${logoSettings.background.color}"
+    stroke-width="${logoSettings.background.strokeWidth}"
+    stroke-opacity="${logoSettings.background.strokeOpacity / 100}"
+    stroke="${logoSettings.background.strokeColor}"
   />
   <g
     transform="translate(${iconPosition}, ${iconPosition}) rotate(${logoSettings.icon.rotate} ${logoSettings.icon.size / 2} ${logoSettings.icon.size / 2}) scale(${logoIconScale})"
