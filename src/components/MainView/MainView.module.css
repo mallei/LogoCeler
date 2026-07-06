@@ -36,8 +36,16 @@
   }
 }
 
+.resetBtn,
 .zoomBtn {
-  position: absolute;
+  position: absolute !important;
   bottom: 0.5rem;
+}
+
+.resetBtn {
+  left: 0.5rem;
+}
+
+.zoomBtn {
   right: 0.5rem;
 }
