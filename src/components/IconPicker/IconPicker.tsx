@@ -9,14 +9,16 @@ import {
   Tooltip,
 } from "@mantine/core";
 import { useState } from "react";
+import { type IconName } from "@/types";
+import { DynamicIcon } from "@/components/DynamicIcon/DynamicIcon";
 
 interface IconPickerProps {
   opened: boolean;
   onClose: () => void;
-  onPick: (icon: TablerIcons.Icon) => void;
+  onPick: (iconName: IconName) => void;
 }
 
-const iconNames = Object.keys(TablerIcons).filter(
+const iconNames = (Object.keys(TablerIcons) as IconName[]).filter(
   (key) =>
     key.startsWith("Icon") &&
     !key.endsWith("Filled") &&
@@ -40,14 +42,10 @@ export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
     <Modal opened={opened} onClose={onClose} title="Icon Picker" size="auto">
       <SimpleGrid cols={8} spacing="xs">
         {visibleIconNames.map((iconName) => {
-          const IconComponent = TablerIcons[
-            iconName as keyof typeof TablerIcons
-          ] as TablerIcons.Icon;
-
           return (
             <Tooltip
               key={iconName}
-              label={IconComponent.displayName}
+              label={iconName.split("Icon")[1]}
               color="blue"
               withArrow
             >
@@ -55,9 +53,9 @@ export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
                 variant="light"
                 color="gray"
                 size="xl"
-                onClick={() => onPick(IconComponent)}
+                onClick={() => onPick(iconName)}
               >
-                <IconComponent strokeWidth={1.75} />
+                <DynamicIcon name={iconName} strokeWidth={1.75} />
               </ActionIcon>
             </Tooltip>
           );

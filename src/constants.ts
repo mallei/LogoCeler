@@ -1,6 +1,5 @@
 import { type LogoSettingsType } from "@/types";
 import { createTheme, Modal } from "@mantine/core";
-import { IconBox } from "@tabler/icons-react";
 
 export const MANTINE_THEME = createTheme({
   fontFamily: "DMSans",
@@ -22,7 +21,7 @@ export const MANTINE_THEME = createTheme({
 
 export const DEFAULT_LOGO_SETTINGS: LogoSettingsType = {
   icon: {
-    icon: IconBox,
+    name: "IconBox",
     size: 350,
     rotate: 0,
     strokeWidth: 1.75,

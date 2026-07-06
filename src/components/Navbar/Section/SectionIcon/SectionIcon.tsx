@@ -7,28 +7,35 @@ import { use } from "react";
 import { LogoContext } from "@/context/logoContext";
 import { IconPicker } from "@/components/IconPicker/IconPicker";
 import { useDisclosure } from "@mantine/hooks";
+import { DynamicIcon } from "@/components/DynamicIcon/DynamicIcon";
 
 export function SectionIcon() {
   const { logoSettings, setLogoSettings } = use(LogoContext);
-  const LogoIcon = logoSettings.icon.icon;
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <SectionWrapper>
-      <SectionField mainLabel="Icon" secondaryLabel={LogoIcon.displayName}>
+      <SectionField
+        mainLabel="Icon"
+        secondaryLabel={logoSettings.icon.name.split("Icon")[1]}
+      >
         <IconPicker
           opened={opened}
           onClose={close}
           onPick={(newValue) => {
             setLogoSettings((prev) => ({
               ...prev,
-              icon: { ...prev.icon, icon: newValue },
+              icon: { ...prev.icon, name: newValue },
             }));
             close();
           }}
         />
         <ActionIcon variant="light" color="gray" size="xl" onClick={open}>
-          <LogoIcon size={26} strokeWidth={logoSettings.icon.strokeWidth} />
+          <DynamicIcon
+            name={logoSettings.icon.name}
+            size={26}
+            strokeWidth={logoSettings.icon.strokeWidth}
+          />
         </ActionIcon>
       </SectionField>
       <SectionField mainLabel="Size" secondaryLabel="[0; 512]">

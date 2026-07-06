@@ -1,3 +1,4 @@
+import { DynamicIcon } from "@/components/DynamicIcon/DynamicIcon";
 import type { LogoSettingsType } from "@/types";
 import { renderToStaticMarkup } from "react-dom/server";
 
@@ -5,8 +6,9 @@ export function generateLogoSVG(
   logoSettings: LogoSettingsType,
   logoSVGSize: number,
 ): string {
-  const LogoIcon = logoSettings.icon.icon;
-  const logoIconSVG = renderToStaticMarkup(<LogoIcon />);
+  const logoIconSVG = renderToStaticMarkup(
+    <DynamicIcon name={logoSettings.icon.name} />,
+  );
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(logoIconSVG, "image/svg+xml");

@@ -8,8 +8,8 @@ import {
 import { SectionIcon } from "@/components/Navbar/Section/SectionIcon/SectionIcon";
 import { SectionBackground } from "@/components/Navbar/Section/SectionBackground/SectionBackground";
 import { useState } from "react";
-import classes from "./Navbar.module.css";
 import { useHotkeys } from "@mantine/hooks";
+import classes from "./Navbar.module.css";
 
 interface NavbarLinkProps {
   icon: Icon;

@@ -1,8 +1,10 @@
-import { type Icon } from "@tabler/icons-react";
+import * as TablerIcons from "@tabler/icons-react";
+
+export type IconName = keyof typeof TablerIcons;
 
 export interface LogoSettingsType {
   icon: {
-    icon: Icon;
+    name: IconName;
     size: number;
     rotate: number;
     strokeWidth: number;
