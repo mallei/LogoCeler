@@ -12,7 +12,7 @@ interface LogoDownloadProps {
 }
 
 export function LogoDownload({ opened, onClose }: LogoDownloadProps) {
-  const { logoSettings } = use(LogoContext);
+  const [logoSettings] = use(LogoContext);
   const [name, setName] = useState("logo");
   const [format, setFormat] = useState<
     LogoDownloadSettingsType["format"] | null

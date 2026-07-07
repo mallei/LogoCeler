@@ -1,4 +1,3 @@
-import { DEFAULT_LOGO_SETTINGS } from "@/constants";
 import { use } from "react";
 import { LogoContext } from "@/context/logoContext";
 import { generateLogoSVG } from "@/helpers/generateLogoSVG";
@@ -8,17 +7,13 @@ import { useCounter, useHotkeys } from "@mantine/hooks";
 import classes from "./MainView.module.css";
 
 export function MainView() {
-  const { logoSettings, setLogoSettings } = use(LogoContext);
+  const [logoSettings, , resetLogoSettings] = use(LogoContext);
   const [logoPreviewZoom, { increment, decrement, reset }] = useCounter(1, {
     min: 0.25,
     max: 1.5,
     step: 0.25,
   });
   const logoPreviewSize = 512 * logoPreviewZoom;
-
-  function resetLogoSettings() {
-    setLogoSettings(DEFAULT_LOGO_SETTINGS);
-  }
 
   useHotkeys([
     ["mod + -", () => decrement()],

@@ -7,7 +7,7 @@ import { use } from "react";
 import { LogoContext } from "@/context/logoContext";
 
 export function SectionBackground() {
-  const { logoSettings, setLogoSettings } = use(LogoContext);
+  const [logoSettings, setLogoSettings] = use(LogoContext);
 
   return (
     <SectionWrapper>

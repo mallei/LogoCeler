@@ -5,17 +5,19 @@ import { Navbar } from "@/components/Navbar/Navbar";
 import { MainView } from "@/components/MainView/MainView";
 import { LogoContext } from "@/context/logoContext";
 import { type LogoSettingsType } from "@/types";
-import { useState } from "react";
+import { useLocalStorage } from "@mantine/hooks";
 import "@mantine/core/styles.css";
 
 export default function App() {
-  const [logoSettings, setLogoSettings] = useState<LogoSettingsType>(
-    DEFAULT_LOGO_SETTINGS,
-  );
+  const [logoSettings, setLogoSettings, resetLogoSettings] =
+    useLocalStorage<LogoSettingsType>({
+      key: "logo-settings",
+      defaultValue: DEFAULT_LOGO_SETTINGS,
+    });
 
   return (
     <MantineProvider theme={MANTINE_THEME}>
-      <LogoContext value={{ logoSettings, setLogoSettings }}>
+      <LogoContext value={[logoSettings, setLogoSettings, resetLogoSettings]}>
         <Header />
         <Flex flex={1} mih={0}>
           <Navbar />

@@ -10,7 +10,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { DynamicIcon } from "@/components/DynamicIcon/DynamicIcon";
 
 export function SectionIcon() {
-  const { logoSettings, setLogoSettings } = use(LogoContext);
+  const [logoSettings, setLogoSettings] = use(LogoContext);
   const [opened, { open, close }] = useDisclosure(false);
 
   return (

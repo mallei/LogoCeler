@@ -1,11 +1,7 @@
 import { type LogoSettingsType } from "@/types";
-import { createContext, Dispatch, SetStateAction } from "react";
+import { type UseStorageReturnValue } from "@mantine/hooks";
+import { createContext } from "react";
 
-interface LogoContextType {
-  logoSettings: LogoSettingsType;
-  setLogoSettings: Dispatch<SetStateAction<LogoSettingsType>>;
-}
-
-export const LogoContext = createContext<LogoContextType>(
-  {} as LogoContextType,
-);
+export const LogoContext = createContext<
+  UseStorageReturnValue<LogoSettingsType>
+>({} as UseStorageReturnValue<LogoSettingsType>);
