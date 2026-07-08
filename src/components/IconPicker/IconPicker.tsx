@@ -6,9 +6,10 @@ import {
   Pagination,
   SimpleGrid,
   Text,
+  TextInput,
   Tooltip,
 } from "@mantine/core";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { type IconName } from "@/types";
 import { DynamicIcon } from "@/components/DynamicIcon/DynamicIcon";
 
@@ -26,20 +27,40 @@ const iconNames = (Object.keys(TablerIcons) as IconName[]).filter(
 );
 
 const limit = 64;
-const total = iconNames.length;
-const totalPages = Math.ceil(total / limit);
 
 export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
   const [page, setPage] = useState(1);
-  const message = `Showing ${limit * (page - 1) + 1} - ${Math.min(total, limit * page)} of ${total}`;
+  const [search, setSearch] = useState("");
 
-  const visibleIconNames = iconNames.slice(
+  const filteredIcons = useMemo(
+    () =>
+      iconNames.filter((iconName) =>
+        iconName.toLowerCase().includes(search.toLowerCase()),
+      ),
+    [search],
+  );
+
+  const total = filteredIcons.length;
+  const totalPages = Math.ceil(total / limit);
+
+  const visibleIconNames = filteredIcons.slice(
     limit * (page - 1),
     Math.min(total, limit * page),
   );
 
   return (
     <Modal opened={opened} onClose={onClose} title="Icon Picker" size="auto">
+      <TextInput
+        leftSectionPointerEvents="none"
+        leftSection={<TablerIcons.IconSearch size={20} strokeWidth={1.75} />}
+        placeholder={`Search ${iconNames.length} icons...`}
+        value={search}
+        onChange={(e) => {
+          setSearch(e.currentTarget.value);
+          setPage(1);
+        }}
+        mb="sm"
+      />
       <SimpleGrid cols={8} spacing="xs">
         {visibleIconNames.map((iconName) => {
           return (
@@ -61,17 +82,19 @@ export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
           );
         })}
       </SimpleGrid>
-      <Group justify="flex-end" mt="sm">
-        <Text span size="sm">
-          {message}
-        </Text>
-        <Pagination
-          total={totalPages}
-          value={page}
-          onChange={setPage}
-          withPages={false}
-        />
-      </Group>
+      {total > limit && (
+        <Group justify="flex-end" mt="sm">
+          <Text span size="sm">
+            {`Showing ${limit * (page - 1) + 1} - ${Math.min(total, limit * page)} of ${total}`}
+          </Text>
+          <Pagination
+            total={totalPages}
+            value={page}
+            onChange={setPage}
+            withPages={false}
+          />
+        </Group>
+      )}
     </Modal>
   );
 }
