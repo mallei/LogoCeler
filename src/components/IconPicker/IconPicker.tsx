@@ -1,6 +1,7 @@
 import * as TablerIcons from "@tabler/icons-react";
 import {
   ActionIcon,
+  EmptyState,
   Group,
   Modal,
   Pagination,
@@ -51,6 +52,7 @@ export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
   return (
     <Modal opened={opened} onClose={onClose} title="Icon Picker" size="auto">
       <TextInput
+        data-autofocus
         leftSectionPointerEvents="none"
         leftSection={<TablerIcons.IconSearch size={20} strokeWidth={1.75} />}
         placeholder={`Search ${iconNames.length} icons...`}
@@ -61,27 +63,37 @@ export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
         }}
         mb="sm"
       />
-      <SimpleGrid cols={8} spacing="xs">
-        {visibleIconNames.map((iconName) => {
-          return (
-            <Tooltip
-              key={iconName}
-              label={iconName.split("Icon")[1]}
-              color="blue"
-              withArrow
-            >
-              <ActionIcon
-                variant="light"
-                color="gray"
-                size="xl"
-                onClick={() => onPick(iconName)}
+      {total > 0 ? (
+        <SimpleGrid cols={8} spacing="xs">
+          {visibleIconNames.map((iconName) => {
+            return (
+              <Tooltip
+                key={iconName}
+                label={iconName.split("Icon")[1]}
+                color="blue"
+                withArrow
               >
-                <DynamicIcon name={iconName} strokeWidth={1.75} />
-              </ActionIcon>
-            </Tooltip>
-          );
-        })}
-      </SimpleGrid>
+                <ActionIcon
+                  variant="light"
+                  color="gray"
+                  size="xl"
+                  onClick={() => onPick(iconName)}
+                >
+                  <DynamicIcon name={iconName} strokeWidth={1.75} />
+                </ActionIcon>
+              </Tooltip>
+            );
+          })}
+        </SimpleGrid>
+      ) : (
+        <EmptyState
+          icon={<TablerIcons.IconMoodConfuzedFilled />}
+          title={`No results for "${search}"`}
+          description="Try searching with different keyword"
+          my="lg"
+          mx="xl"
+        />
+      )}
       {total > limit && (
         <Group justify="flex-end" mt="sm">
           <Text span size="sm">
