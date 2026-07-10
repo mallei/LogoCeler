@@ -4,6 +4,16 @@
   font-weight: 100 900;
 }
 
+::selection {
+  color: #ffffff;
+  background-color: var(--mantine-color-blue-7);
+}
+
+body {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 #root {
   height: 100svh;
   overflow: hidden;

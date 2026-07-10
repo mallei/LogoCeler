@@ -13,7 +13,7 @@ export const MANTINE_THEME = createTheme({
       defaultProps: {
         centered: true,
         transitionProps: { duration: 0 },
-        overlayProps: { color: "var(--mantine-color-gray-0)" },
+        overlayProps: { color: "var(--mantine-color-gray-4)" },
       },
     }),
   },

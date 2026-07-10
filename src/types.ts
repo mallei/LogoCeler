@@ -27,14 +27,5 @@ export interface LogoSettingsType {
 export interface LogoDownloadSettingsType {
   name: string;
   format: "PNG" | "SVG";
-  size:
-    | "16x16"
-    | "32x32"
-    | "48x48"
-    | "64x64"
-    | "128x128"
-    | "256x256"
-    | "512x512"
-    | "1024x1024"
-    | "2048x2048";
+  size?: number;
 }

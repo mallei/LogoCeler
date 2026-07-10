@@ -15,16 +15,15 @@ export function downloadLogo(
 ) {
   const blob = new Blob([logoSVG], { type: "image/svg+xml" });
   const url = URL.createObjectURL(blob);
-  const filename = `${name}-${size}.${format.toLowerCase()}`;
 
   if (format === "SVG") {
-    downloadFile(url, filename);
+    downloadFile(url, `${name}.svg`);
     return;
   }
 
   const img = new Image();
   img.onload = () => {
-    const logoSize = Number(size.split("x")[0]);
+    const logoSize = size!;
 
     const canvas = document.createElement("canvas");
     canvas.width = logoSize;
@@ -37,7 +36,7 @@ export function downloadLogo(
       if (!blob) return;
 
       const pngUrl = URL.createObjectURL(blob);
-      downloadFile(pngUrl, filename);
+      downloadFile(pngUrl, `${name}-${logoSize}x${logoSize}.png`);
 
       URL.revokeObjectURL(url);
     }, "image/png");

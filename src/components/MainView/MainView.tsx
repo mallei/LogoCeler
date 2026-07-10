@@ -38,8 +38,7 @@ export function MainView() {
         />
       </Tooltip>
       <Button
-        variant="light"
-        color="gray"
+        variant="default"
         size="compact-sm"
         className={classes.resetBtn}
         onClick={() => resetLogoSettings()}
@@ -48,20 +47,22 @@ export function MainView() {
       </Button>
       <Button.Group className={classes.zoomBtn}>
         <Button
-          variant="light"
-          color="gray"
+          variant="default"
           size="compact-sm"
           onClick={decrement}
           disabled={logoPreviewZoom === 0.25}
         >
           <IconMinus size={18} strokeWidth={1.75} />
         </Button>
-        <Button.GroupSection variant="light" color="gray" size="compact-sm">
+        <Button.GroupSection
+          variant="default"
+          size="compact-sm"
+          style={{ borderLeft: "none", borderRight: "none" }}
+        >
           {logoPreviewZoom * 100}%
         </Button.GroupSection>
         <Button
-          variant="light"
-          color="gray"
+          variant="default"
           size="compact-sm"
           onClick={increment}
           disabled={logoPreviewZoom === 1.5}

@@ -17,13 +17,19 @@ export function LogoDownload({ opened, onClose }: LogoDownloadProps) {
   const [format, setFormat] = useState<
     LogoDownloadSettingsType["format"] | null
   >("PNG");
-  const [size, setSize] = useState<LogoDownloadSettingsType["size"] | null>(
-    "512x512",
-  );
+  const [size, setSize] = useState<string | null>("512x512");
+  const sizeNumber = Number(size!.split("x")[0]);
 
   function handleDownload() {
-    const logoSVG = generateLogoSVG(logoSettings, Number(size!.split("x")[0]));
-    downloadLogo(logoSVG, { name, format: format!, size: size! });
+    const logoSVG = generateLogoSVG(
+      logoSettings,
+      format === "PNG" ? sizeNumber : undefined,
+    );
+    downloadLogo(logoSVG, {
+      name,
+      format: format!,
+      size: format === "PNG" ? sizeNumber : undefined,
+    });
   }
 
   return (
@@ -49,25 +55,27 @@ export function LogoDownload({ opened, onClose }: LogoDownloadProps) {
           />
         </Grid.Col>
         <Grid.Col span={7}>
-          <Select
-            variant="filled"
-            label="Size (px)"
-            allowDeselect={false}
-            withCheckIcon={false}
-            data={[
-              "16x16",
-              "32x32",
-              "48x48",
-              "64x64",
-              "128x128",
-              "256x256",
-              "512x512",
-              "1024x1024",
-              "2048x2048",
-            ]}
-            value={size}
-            onChange={setSize}
-          />
+          {format === "PNG" && (
+            <Select
+              variant="filled"
+              label="Size (px)"
+              allowDeselect={false}
+              withCheckIcon={false}
+              data={[
+                "16x16",
+                "32x32",
+                "48x48",
+                "64x64",
+                "128x128",
+                "256x256",
+                "512x512",
+                "1024x1024",
+                "2048x2048",
+              ]}
+              value={size}
+              onChange={setSize}
+            />
+          )}
         </Grid.Col>
         <Grid.Col span={12}>
           <Button

@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 export function generateLogoSVG(
   logoSettings: LogoSettingsType,
-  logoSVGSize: number,
+  logoSVGSize?: number,
 ): string {
   const logoIconSVG = renderToStaticMarkup(
     <DynamicIcon name={logoSettings.icon.name} />,
@@ -28,10 +28,7 @@ export function generateLogoSVG(
   const logoIconScale = logoSettings.icon.size / 24;
 
   return `
-<svg
-  width="${logoSVGSize}"
-  height="${logoSVGSize}"
-  viewBox="0 0 512 512"
+<svg ${logoSVGSize ? `width="${logoSVGSize}" height="${logoSVGSize}" ` : ""}viewBox="0 0 512 512"
   xmlns="http://www.w3.org/2000/svg"
 >
   <rect
