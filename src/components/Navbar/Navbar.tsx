@@ -7,6 +7,7 @@ import {
 } from "@tabler/icons-react";
 import { SectionIcon } from "@/components/Navbar/Section/SectionIcon/SectionIcon";
 import { SectionBackground } from "@/components/Navbar/Section/SectionBackground/SectionBackground";
+import { SectionAbout } from "@/components/Navbar/Section/SectionAbout/SectionAbout";
 import { useState } from "react";
 import { useHotkeys } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
@@ -83,7 +84,7 @@ export function Navbar() {
         >
           {active === 0 && <SectionIcon />}
           {active === 1 && <SectionBackground />}
-          {active === 2 && <span>About</span>}
+          {active === 2 && <SectionAbout />}
         </ScrollArea>
       </div>
     </nav>
