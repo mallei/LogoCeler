@@ -2,6 +2,7 @@ import { Button, Group, Text } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
 import { useDisclosure, useHotkeys } from "@mantine/hooks";
 import { LogoDownload } from "@/components/LogoDownload/LogoDownload";
+import { notifications } from "@mantine/notifications";
 import classes from "./Header.module.css";
 
 export function Header() {
@@ -22,7 +23,13 @@ export function Header() {
         >
           Download
         </Button>
-        <LogoDownload opened={opened} onClose={close} />
+        <LogoDownload
+          opened={opened}
+          onClose={() => {
+            notifications.clean();
+            close();
+          }}
+        />
       </Group>
     </header>
   );

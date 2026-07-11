@@ -12,12 +12,15 @@ function downloadFile(url: string, filename: string) {
 export function downloadLogo(
   logoSVG: string,
   { name, size, format }: LogoDownloadSettingsType,
+  onComplete: (bytes: number, filename: string) => void,
 ) {
   const blob = new Blob([logoSVG], { type: "image/svg+xml" });
   const url = URL.createObjectURL(blob);
 
   if (format === "SVG") {
-    downloadFile(url, `${name}.svg`);
+    const filename = `${name}.svg`;
+    downloadFile(url, filename);
+    onComplete(blob.size, filename);
     return;
   }
 
@@ -36,9 +39,11 @@ export function downloadLogo(
       if (!blob) return;
 
       const pngUrl = URL.createObjectURL(blob);
-      downloadFile(pngUrl, `${name}-${logoSize}x${logoSize}.png`);
+      const filename = `${name}-${logoSize}x${logoSize}.png`;
+      downloadFile(pngUrl, filename);
 
       URL.revokeObjectURL(url);
+      onComplete(blob.size, filename);
     }, "image/png");
   };
 

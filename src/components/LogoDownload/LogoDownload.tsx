@@ -5,6 +5,8 @@ import { use } from "react";
 import { generateLogoSVG } from "@/helpers/generateLogoSVG";
 import { downloadLogo } from "@/helpers/downloadLogo";
 import { useState } from "react";
+import { notifications } from "@mantine/notifications";
+import prettyBytes from "pretty-bytes";
 
 interface LogoDownloadProps {
   opened: boolean;
@@ -25,11 +27,21 @@ export function LogoDownload({ opened, onClose }: LogoDownloadProps) {
       logoSettings,
       format === "PNG" ? sizeNumber : undefined,
     );
-    downloadLogo(logoSVG, {
-      name,
-      format: format!,
-      size: format === "PNG" ? sizeNumber : undefined,
-    });
+    downloadLogo(
+      logoSVG,
+      {
+        name,
+        format: format!,
+        size: format === "PNG" ? sizeNumber : undefined,
+      },
+      (bytes, filename) => {
+        notifications.show({
+          title: "Logo Downloaded",
+          message: `${filename} -- ${prettyBytes(bytes)}`,
+          position: "top-right",
+        });
+      },
+    );
   }
 
   return (
