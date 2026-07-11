@@ -36,7 +36,7 @@ export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
   const filteredIcons = useMemo(
     () =>
       iconNames.filter((iconName) =>
-        iconName.toLowerCase().includes(search.toLowerCase()),
+        iconName.slice(4).toLowerCase().includes(search.toLowerCase()),
       ),
     [search],
   );
@@ -69,7 +69,7 @@ export function IconPicker({ opened, onClose, onPick }: IconPickerProps) {
             return (
               <Tooltip
                 key={iconName}
-                label={iconName.split("Icon")[1]}
+                label={iconName.slice(4)}
                 color="blue"
                 withArrow
               >
