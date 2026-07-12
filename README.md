@@ -6,8 +6,6 @@
 
 <img src="./images/screenshot.png" width="100%" alt="Screenshot">
 
----
-
 ## Features
 
 - Over **4,500 icons** to choose from
@@ -15,8 +13,6 @@
 - Exports **native SVG** (no **`foreignObject`**) for **compact SVG and PNG** output
 - Built with **Tauri**, resulting in a significantly **smaller executable** than Electron-based applications
 - **Works offline, too**
-
----
 
 ## Building from Source
 
@@ -70,8 +66,6 @@ src-tauri/target/release
 
 For more information about building and distributing Tauri applications, see the [official Tauri documentation](https://v2.tauri.app/distribute/).
 
----
-
 ## Keyboard Shortcuts
 
 | Shortcut                                                       | Action             |
@@ -85,8 +79,6 @@ For more information about building and distributing Tauri applications, see the
 | <kbd>Ctrl</kbd> + <kbd>S</kbd>                                 | Download           |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>              | Reset settings     |
 
----
-
 ## Built With
 
 - Tauri
@@ -97,8 +89,6 @@ For more information about building and distributing Tauri applications, see the
 - Tabler Icons
 - Rust
 
----
-
 ## Contributing
 
 Contributions are always welcome!
@@ -106,8 +96,6 @@ Contributions are always welcome!
 - Open an Issue
 - Submit a Pull Request
 - Suggest new features
-
----
 
 ## License
 
