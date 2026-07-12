@@ -1,0 +1,51 @@
+.main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    linear-gradient(var(--mantine-color-gray-2) 1px, transparent 1px),
+    linear-gradient(
+      to right,
+      var(--mantine-color-gray-2) 1px,
+      var(--mantine-color-gray-0) 1px
+    );
+  background-size: 1.7rem 1.7rem;
+  background-position: center center;
+}
+
+.logoPreview {
+  outline-width: 2px;
+  outline-style: dashed;
+  outline-color: var(--mantine-color-gray-3);
+  background-color: color-mix(
+    in srgb,
+    var(--mantine-color-gray-3),
+    transparent 75%
+  );
+
+  &:hover {
+    outline-color: var(--mantine-color-gray-4);
+    background-color: color-mix(
+      in srgb,
+      var(--mantine-color-gray-4),
+      transparent 75%
+    );
+  }
+}
+
+.resetBtn,
+.zoomBtn {
+  position: absolute !important;
+  bottom: 0.5rem;
+}
+
+.resetBtn {
+  left: 0.5rem;
+}
+
+.zoomBtn {
+  right: 0.5rem;
+}
